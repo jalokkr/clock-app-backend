@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const SECRET_KEY = process.env.JWT_SECRET;
+const tokenBlacklist = new Set(); 
 
 export async function authenticateUser(email, password) {
   const user = await userModel.findOne({ email });
@@ -22,4 +23,8 @@ export async function authenticateUser(email, password) {
     expiresIn: "1h",
   });
   return { token, user };
+}
+
+export function logoutUser(token) {
+  tokenBlacklist.add(token); 
 }
