@@ -33,3 +33,11 @@ export const generatePassword = (length) => {
 
   return password;
 };
+
+// in-memory blacklist
+const tokenBlacklist = new Set();
+
+// Helper function to check if a token is blacklisted
+function isTokenBlacklisted(token) {
+  return tokenBlacklist.has(token);
+}
