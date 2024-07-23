@@ -7,7 +7,7 @@ import {
   deleteUser,
   updateUser,
 } from "../controllers/usersController.js";
-import { loginUser } from "../controllers/authController.js";
+import { loginUser, logout } from "../controllers/authController.js";
 import { authenticateToken } from "../middlewares/authMiddleware.js";
 import { checkRole } from "../middlewares/roleMiddleware.js";
 
@@ -17,5 +17,6 @@ router.post("/", createUserHandler);
 router.delete("/:userId", authenticateToken, checkRole(["admin"]), deleteUser);
 router.put("/:userId", authenticateToken, checkRole(["admin"]), updateUser);
 router.post("/login", loginUser);
+router.post("/logout", logout);
 
 export default router;
