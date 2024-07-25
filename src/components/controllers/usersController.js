@@ -8,7 +8,6 @@ import {
 
 export async function getAllUsersList(req, res) {
   try {
-    console.log("calling")
     const users = await getAllUsers();
     res.json(users);
   } catch (error) {
@@ -33,7 +32,6 @@ export async function createUserHandler(req, res) {
     const newUser = await createUser(req.body);
     res.status(201).json(newUser);
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error: error.message });
   }
 }

@@ -71,6 +71,7 @@ export async function approveOrderHandler(req, res) {
   }
 }
 
+
 export async function rejectOrderHandler(req, res) {
   try {
     const rejectedOrder = await rejectOrder(req.params.orderId);
