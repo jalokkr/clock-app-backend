@@ -9,7 +9,6 @@ const productSchema = new Schema({
   },
   code: {
     type: String,
-    unique: true,
   },
   category: {
     type: String,
