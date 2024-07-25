@@ -12,10 +12,7 @@ const orderSchema = new Schema({
   product: {
     type: Types.ObjectId,
     ref: "Product",
-  },
-  productCode: {
-    type: Number,
-    unique: true,
+    required: true, 
   },
   quantity: {
     type: String,
@@ -33,7 +30,7 @@ const orderSchema = new Schema({
   log: [
     {
       type: String,
-      required: true,
+      required: false,
     },
   ],
   status: {
