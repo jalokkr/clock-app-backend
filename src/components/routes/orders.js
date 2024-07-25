@@ -13,7 +13,12 @@ import { authenticateToken } from "../middlewares/authMiddleware.js";
 import { checkRole } from "../middlewares/roleMiddleware.js";
 
 router.post("/", authenticateToken, createOrderHandler);
-router.get("/", authenticateToken, getAllOrdersHandler);
+router.get(
+  "/",
+  authenticateToken,
+  checkRole(["admin", "user"]),
+  getAllOrdersHandler
+);
 router.get("/:orderId", authenticateToken, getOrderHandler);
 router.put(
   "/:orderId",
