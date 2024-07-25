@@ -12,7 +12,7 @@ export async function getAllOrders(user) {
   if (user.role === "admin") {
     orders = await Order.find().populate("user").populate("product");
   } else {
-    orders = await Order.find({ user: user._id })
+    orders = await Order.find({ user: user.id })
       .populate("user")
       .populate("product");
   }
